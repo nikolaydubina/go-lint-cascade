@@ -5,8 +5,6 @@
 
 Detect missing cascading calls in Go.
 
-For example, if you have cascade calls for `WithDefaults()` config definitions, this linter will detect if you missed any `WithDefaults()` calls.
-
 ```bash
 go install github.com/nikolaydubina/go-lint-cascade@latest
 ```
@@ -15,32 +13,26 @@ go install github.com/nikolaydubina/go-lint-cascade@latest
 go-lint-cascade ./...
 ```
 
-This code would be flagged:
+For example, if you have cascade calls for `WithDefaults()` in nested config structs, this linter will detect if you missed any `WithDefaults()` calls.
 
 ```go
-type Outer struct {
-    Inner Inner
+type Config struct {
+    DB DBConfig
 }
 
-func (s Outer) WithDefaults() Outer {
-    // ERROR: Missing s.Inner = s.Inner.WithDefaults()
+func (s Config) WithDefaults() Outer {
+    // ERROR: Missing s.DB = s.DB.WithDefaults()
     return s
 }
 
-type Inner struct { Value int }
+type DBConfig struct {
+    Port int
+}
 
-func (s Inner) WithDefaults() Inner { 
-    if s.Value == 0 {
-        s.Value = 42
+func (s DBConfig) WithDefaults() Inner { 
+    if s.Port == 0 {
+        s.Port = 42
     }
-    return s
-}
-```
-
-Fixed version:
-```go
-func (s Outer) WithDefaults() Outer {
-    s.Inner = s.Inner.WithDefaults()
     return s
 }
 ```

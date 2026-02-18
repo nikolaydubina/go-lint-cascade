@@ -111,8 +111,8 @@ func getReceiverType(pass *analysis.Pass, fn *ast.FuncDecl) *types.Named {
 func findFieldsWithMethod(structType *types.Struct, method string) []string {
 	var fields []string
 
-	for i := 0; i < structType.NumFields(); i++ {
-		field := structType.Field(i)
+	for field := range structType.Fields() {
+		field := field
 		fieldType := field.Type()
 
 		if ptr, ok := fieldType.(*types.Pointer); ok {

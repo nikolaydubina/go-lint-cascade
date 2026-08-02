@@ -1,11 +1,6 @@
 # go-lint-cascade
 
-<p align="center">
-  ✨ Sponsored by <a href="https://ndx.one/?ct=github">NDX Technologies</a>
-</p>
-
 [![codecov](https://codecov.io/gh/nikolaydubina/go-lint-cascade/graph/badge.svg?token=D3ww4rcZ0N)](https://codecov.io/gh/nikolaydubina/go-lint-cascade)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nikolaydubina/go-lint-cascade)](https://goreportcard.com/report/github.com/nikolaydubina/go-lint-cascade)
 
 Detect missing cascading calls in Go.
 

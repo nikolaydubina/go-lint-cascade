@@ -1,7 +1,5 @@
 # go-lint-cascade
 
-[![codecov](https://codecov.io/gh/nikolaydubina/go-lint-cascade/graph/badge.svg?token=D3ww4rcZ0N)](https://codecov.io/gh/nikolaydubina/go-lint-cascade)
-
 Detect missing cascading calls in Go.
 
 ```bash
